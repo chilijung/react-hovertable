@@ -1,0 +1,20 @@
+{
+  "presets": [
+    "airbnb"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "add-module-exports"
+      ],
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
+}
