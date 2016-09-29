@@ -41,7 +41,7 @@ ReactDOM.render(
 
 ## Demo
 
-![exmaple](./example/demo.png)
+<img src="./example/demo.png" width="200"/>
 
 ## License
 
