@@ -41,7 +41,7 @@ ReactDOM.render(
 
 ## Demo
 
-[!exmaple](./example/demo.png)
+![exmaple](./example/demo.png)
 
 ## License
 
