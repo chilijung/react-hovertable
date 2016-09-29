@@ -63,8 +63,7 @@
     "validate": "npm ls"
   },
   "pre-commit": [
-    "lint",
-    "test"
+    "lint"
   ],
   "repository": "canner/react-hovertable",
   "dependencies": {
