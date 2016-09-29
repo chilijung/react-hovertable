@@ -10,13 +10,42 @@ $ npm install --save react-hovertable
 ## Usage
 
 ```js
-var reactHovertable = require('react-hovertable');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import HoverTable from '../src';
 
-reactHovertable('Rainbow');
+const onClick = (e, data) => {
+  console.log('click', e, data);
+};
+
+const onMouseOver = (e, data) => {
+  console.log('onMouseOver', e, data);
+};
+
+const onMouseOut = e => {
+  console.log(e);
+};
+
+ReactDOM.render(
+  <HoverTable
+    column={12}
+    row={12}
+    width={300}
+    height={300}
+    onClick={onClick}
+    onMouseOut={onMouseOut}
+    onMouseOver={onMouseOver}
+    />
+, document.getElementById('root'));
 ```
+
+## Demo
+
+[!exmaple](./example/demo.png)
+
 ## License
 
- © [chilijung]()
+ © [Canner](https://github.com/canner)
 
 
 [npm-image]: https://badge.fury.io/js/react-hovertable.svg
