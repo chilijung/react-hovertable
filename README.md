@@ -45,7 +45,7 @@ ReactDOM.render(
 
 ## License
 
- © [Canner](https://github.com/canner)
+MIT © [Canner](https://github.com/canner)
 
 
 [npm-image]: https://badge.fury.io/js/react-hovertable.svg
