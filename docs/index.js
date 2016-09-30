@@ -20,7 +20,7 @@ class HoverTableDemo extends Component {
     this.cellHeight.innerHTML = data.cellHeight;
   }
 
-  onMouseOut(e) {
+  onMouseOut() {
     this.action.innerHTML = 'On mouse out!';
     // data
     this.rowNumber.innerHTML = 'none';
