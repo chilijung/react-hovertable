@@ -23,10 +23,10 @@ class HoverTableDemo extends Component {
   onMouseOut(e, data) {
     this.action.innerHTML = 'On mouse out!';
     // data
-    this.rowNumber.innerHTML = data.rowNumber;
-    this.cellNumber.innerHTML = data.cellNumber;
-    this.rowHeight.innerHTML = data.rowHeight;
-    this.cellHeight.innerHTML = data.cellHeight;
+    this.rowNumber.innerHTML = 'none';
+    this.cellNumber.innerHTML = 'none';
+    this.rowHeight.innerHTML = 'none';
+    this.cellHeight.innerHTML = 'none';
   }
 
   onMouseOver(e, data) {
@@ -39,7 +39,7 @@ class HoverTableDemo extends Component {
   }
 
   render() {
-    const style = {width: '50%', float: 'left'}
+    const style = {width: '50%', float: 'left'};
 
     return (
       <div>
