@@ -43,6 +43,15 @@ ReactDOM.render(
 
 <img src="./example/demo.png" width="200"/>
 
+## Example
+
+clone the repository
+
+```
+node devServer.js
+// open http://localhost:9393
+```
+
 ## License
 
 MIT © [Canner](https://github.com/canner)

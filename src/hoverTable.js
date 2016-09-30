@@ -50,8 +50,7 @@ export default class HoverTable extends Component {
       activeRow: data.rowNumber,
       activeCell: data.cellNumber
     });
-
-    this.refs.dimensions.setTranslate(x, y, data);
+    this.dimensions.setTranslate(x, y, data);
   }
 
   onMouseOutColumn(e) {
@@ -61,7 +60,7 @@ export default class HoverTable extends Component {
       activeRow: null,
       activeCell: null
     });
-    this.refs.dimensions.hideDimensions();
+    this.dimensions.hideDimensions();
   }
 
   render() {
@@ -99,7 +98,9 @@ export default class HoverTable extends Component {
                 />
             )
           }
-          <Dimensions ref="dimensions"/>
+          <Dimensions ref={node => {
+            this.dimensions = node;
+          }}/>
         </Table>
       </div>
     );
