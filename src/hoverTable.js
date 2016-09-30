@@ -23,8 +23,11 @@ export default class HoverTable extends Component {
   static defaultProps = {
     width: 350,
     height: 350,
-    row: 20,
-    column: 20
+    row: 12,
+    column: 12,
+    onMouseOver: arg => arg,
+    onMouseOut: arg => arg,
+    onClick: arg => arg
   };
 
   static propTypes = {

@@ -39,11 +39,27 @@ ReactDOM.render(
 , document.getElementById('root'));
 ```
 
+for more usage, see [docs folder](./docs/index.js)
+
 ## Demo
 
 [LIVE DEMO](https://canner.github.io/react-hovertable)
 
 <img src="./docs/demo.png" width="200"/>
+
+## Props
+
+| **props**      | **type** | **required** | **default** | **description**                                                                                                                        |
+|----------------|----------|--------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| width          | number   | true         | 350         | the width of hovertable                                                                                                                |
+| height         | number   | true         | 350         | the height of hovertable                                                                                                               |
+| row            | number   | true         | 12          | how many rows in hovertable                                                                                                            |
+| column         | number   | true         | 12          | how many columns in hovertable                                                                                                         |
+| selectedRow    | number   | false        | null        | selected row                                                                                                                           |
+| selectedColumn | number   | false        | null        | selected column                                                                                                                        |
+| onMouseOver    | function | false        | () => {}    | this will be trigger when mouse over, with two params  **e**: event object **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
+| onMouseOut     | function | false        | () => {}    | this will be trigger when mouse out                                                                                                    |
+| onClick        | function | false        | () => {}    | this will be trigger when mouse over, with two params  **e**: event object **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
 
 ## Example
 
