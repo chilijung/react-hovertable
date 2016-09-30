@@ -44,7 +44,7 @@ export default class HoverTable extends Component {
   onMouseOverColumn(e, data) {
     this.props.onMouseOver(e, data);
     const x = (data.cellNumber + 1) * data.cellHeight;
-    const y = -(this.props.row - data.rowNumber - 1) * data.rowHeight;
+    const y = (data.rowNumber + 1) * data.rowHeight;
 
     this.setState({
       activeRow: data.rowNumber,
@@ -75,10 +75,13 @@ export default class HoverTable extends Component {
 
     const style = {
       backgroundColor: '#383e4c',
-      position: 'absolute',
+      position: 'relative',
       padding: '5px',
       width: width,
-      height: height
+      height: height,
+      boxSizing: 'content-box',
+      MozBoxSizing: 'content-box',
+      WebkitBoxSizing: 'content-box'
     };
 
     return (

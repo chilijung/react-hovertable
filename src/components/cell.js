@@ -35,17 +35,22 @@ export default class Cell extends Component {
     const cellHeight = width / column;
     let cellStyle;
 
+    const outerStyle = {
+      width: cellHeight,
+      height: rowHeight,
+      padding: '1px',
+      boxSizing: 'inherit',
+      MozBoxSizing: 'inherit',
+      WebkitBoxSizing: 'inherit',
+      cursor: 'pointer',
+      display: 'inline-block'
+    };
+
     const style = {
       default: {
-        width: cellHeight - 2,
-        height: rowHeight - 2,
-        margin: '1px',
-        display: 'inline-block',
-        border: '1px solid #aaa',
-        boxSizing: 'inherit',
-        MozBoxSizing: 'inherit',
-        WebkitBoxSizing: 'inherit',
-        cursor: 'pointer'
+        width: '100%',
+        height: '100%',
+        border: '1px solid #aaa'
       },
       active: {
         backgroundColor: '#aaa'
@@ -65,13 +70,14 @@ export default class Cell extends Component {
 
     return (
       <div
-        style={cellStyle}
+        style={outerStyle}
         onMouseOver={e =>
           onMouseOver(e, {rowNumber, cellNumber, rowHeight, cellHeight})}
         onMouseOut={onMouseOut}
         onClick={e =>
           onClick(e, {rowNumber, cellNumber, rowHeight, cellHeight})}
         >
+        <div style={cellStyle}/>
       </div>
     );
   }

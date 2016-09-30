@@ -41,7 +41,7 @@ export default class Dimensions extends Component {
       color: '#444',
       fontWeight: 'bold',
       textAlign: 'center',
-      position: 'relative',
+      position: 'absolute',
       display: 'inline-block',
       padding: '5px',
       left: x,
