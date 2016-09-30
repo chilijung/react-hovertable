@@ -51,13 +51,13 @@
     "webpack-hot-middleware": "^2.12.2"
   },
   "scripts": {
-    "lint": "eslint src test example",
+    "lint": "eslint src test docs",
     "clean": "rimraf lib dist",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build": "npm run build:commonjs",
-    "build:example": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
+    "build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
     "prepublish": "npm run clean && npm run check:src && npm run build",
-    "postpublish": "npm run build:example",
+    "postpublish": "npm run build:docs",
     "check:src": "npm run lint",
     "test": "cross-env karma start --single-run",
     "test:watch": "cross-env karma start",

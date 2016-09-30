@@ -43,7 +43,7 @@ ReactDOM.render(
 
 [LIVE DEMO](https://canner.github.io/react-hovertable)
 
-<img src="./example/demo.png" width="200"/>
+<img src="./docs/demo.png" width="200"/>
 
 ## Example
 

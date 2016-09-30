@@ -3,9 +3,9 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry: './example/index.js',
+  entry: './docs/index.js',
   output: {
-    path: path.join(__dirname, 'example/static'),
+    path: path.join(__dirname, 'docs/static'),
     filename: 'bundle.js',
     libraryTarget: 'var'
   },
