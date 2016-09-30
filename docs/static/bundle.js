@@ -1,4 +1,4 @@
-/*! This file is created by Canner team. Built time: Fri Sep 30 2016 11:54:02 GMT+0800 (CST) */
+/*! This file is created by Canner team. Built time: Fri Sep 30 2016 11:55:29 GMT+0800 (CST) */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
