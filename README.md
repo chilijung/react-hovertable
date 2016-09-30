@@ -61,7 +61,7 @@ MIT © [Canner](https://github.com/canner)
 
 [npm-image]: https://badge.fury.io/js/react-hovertable.svg
 [npm-url]: https://npmjs.org/package/react-hovertable
-[travis-image]: https://travis-ci.org/canner/react-hovertable.svg?branch=master
-[travis-url]: https://travis-ci.org/canner/react-hovertable
-[daviddm-image]: https://david-dm.org/canner/react-hovertable.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/canner/react-hovertable
+[travis-image]: https://travis-ci.org/Canner/react-hovertable.svg?branch=master
+[travis-url]: https://travis-ci.org/Canner/react-hovertable
+[daviddm-image]: https://david-dm.org/Canner/react-hovertable.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/Canner/react-hovertable
