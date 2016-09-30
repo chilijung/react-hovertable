@@ -57,9 +57,9 @@ for more usage, see [docs folder](./docs/index.js)
 | column         | number   | true         | 12          | how many columns in hovertable                                                                                                         |
 | selectedRow    | number   | false        | null        | selected row                                                                                                                           |
 | selectedColumn | number   | false        | null        | selected column                                                                                                                        |
-| onMouseOver    | function | false        | () => {}    | this will be trigger when mouse over, with two params  **e**: event object **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
+| onMouseOver    | function | false        | () => {}    | this will be trigger when mouse over, with two params, **e**: event object, **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
 | onMouseOut     | function | false        | () => {}    | this will be trigger when mouse out                                                                                                    |
-| onClick        | function | false        | () => {}    | this will be trigger when mouse over, with two params  **e**: event object **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
+| onClick        | function | false        | () => {}    | this will be trigger when mouse over, with two params, **e**: event object, **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
 
 ## Example
 
