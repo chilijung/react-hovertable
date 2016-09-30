@@ -22,7 +22,7 @@ class HoverTableDemo extends Component {
     this.rowNumber.innerHTML = data.rowNumber;
     this.columnNumber.innerHTML = data.columnNumber;
     this.rowHeight.innerHTML = data.rowHeight;
-    this.cellHeight.innerHTML = data.cellHeight;
+    this.cellWidth.innerHTML = data.cellWidth;
 
     this.setState({
       selectedColumn: data.columnNumber,
@@ -36,7 +36,7 @@ class HoverTableDemo extends Component {
     this.rowNumber.innerHTML = 'none';
     this.columnNumber.innerHTML = 'none';
     this.rowHeight.innerHTML = 'none';
-    this.cellHeight.innerHTML = 'none';
+    this.cellWidth.innerHTML = 'none';
   }
 
   onMouseOver(e, data) {
@@ -45,7 +45,7 @@ class HoverTableDemo extends Component {
     this.rowNumber.innerHTML = data.rowNumber;
     this.columnNumber.innerHTML = data.columnNumber;
     this.rowHeight.innerHTML = data.rowHeight;
-    this.cellHeight.innerHTML = data.cellHeight;
+    this.cellWidth.innerHTML = data.cellWidth;
   }
 
   render() {
@@ -92,9 +92,9 @@ class HoverTableDemo extends Component {
             <div ref={node => {
               this.rowHeight = node;
             }}/>
-            <h5>cellHeight: </h5>
+            <h5>cellWidth: </h5>
             <div ref={node => {
-              this.cellHeight = node;
+              this.cellWidth = node;
             }}/>
             <h5>selectedRow: </h5>
             <div>{selectedRow ? selectedRow + 1 : 'none'}</div>

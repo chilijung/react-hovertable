@@ -36,11 +36,11 @@ export default class Cell extends Component {
       onClick
     } = this.props;
 
-    const cellHeight = width / column;
+    const cellWidth = width / column;
     let cellStyle = [];
 
     const outerStyle = {
-      width: cellHeight,
+      width: cellWidth,
       height: rowHeight,
       padding: '1px',
       boxSizing: 'inherit',
@@ -83,10 +83,10 @@ export default class Cell extends Component {
       <div
         style={outerStyle}
         onMouseOver={e =>
-          onMouseOver(e, {rowNumber, columnNumber, rowHeight, cellHeight})}
+          onMouseOver(e, {rowNumber, columnNumber, rowHeight, cellWidth})}
         onMouseOut={onMouseOut}
         onClick={e =>
-          onClick(e, {rowNumber, columnNumber, rowHeight, cellHeight})}
+          onClick(e, {rowNumber, columnNumber, rowHeight, cellWidth})}
         >
         <div style={cellStyle}/>
       </div>

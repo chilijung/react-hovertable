@@ -48,7 +48,7 @@ export default class HoverTable extends Component {
 
   onMouseOverColumn(e, data) {
     this.props.onMouseOver(e, data);
-    const x = (data.columnNumber + 1) * data.cellHeight;
+    const x = (data.columnNumber + 1) * data.cellWidth;
     const y = (data.rowNumber + 1) * data.rowHeight;
 
     this.setState({
@@ -97,7 +97,7 @@ export default class HoverTable extends Component {
               <Row
                 {...this.props}
                 {...this.state}
-                rowHeight={height / column}
+                rowHeight={height / row}
                 key={i}
                 rowNumber={i}
                 onClick={this.onClickColumn}
