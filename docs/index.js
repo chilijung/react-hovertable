@@ -9,22 +9,32 @@ class HoverTableDemo extends Component {
     this.onClick = this.onClick.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+
+    this.state = {
+      selectedColumn: null,
+      selectedRow: null
+    };
   }
 
   onClick(e, data) {
     this.action.innerHTML = 'Click!';
     // data
     this.rowNumber.innerHTML = data.rowNumber;
-    this.cellNumber.innerHTML = data.cellNumber;
+    this.columnNumber.innerHTML = data.columnNumber;
     this.rowHeight.innerHTML = data.rowHeight;
     this.cellHeight.innerHTML = data.cellHeight;
+
+    this.setState({
+      selectedColumn: data.columnNumber,
+      selectedRow: data.rowNumber
+    });
   }
 
   onMouseOut() {
     this.action.innerHTML = 'On mouse out!';
     // data
     this.rowNumber.innerHTML = 'none';
-    this.cellNumber.innerHTML = 'none';
+    this.columnNumber.innerHTML = 'none';
     this.rowHeight.innerHTML = 'none';
     this.cellHeight.innerHTML = 'none';
   }
@@ -33,13 +43,14 @@ class HoverTableDemo extends Component {
     this.action.innerHTML = 'On mouse over!';
     // data
     this.rowNumber.innerHTML = data.rowNumber;
-    this.cellNumber.innerHTML = data.cellNumber;
+    this.columnNumber.innerHTML = data.columnNumber;
     this.rowHeight.innerHTML = data.rowHeight;
     this.cellHeight.innerHTML = data.cellHeight;
   }
 
   render() {
     const style = {width: '50%', float: 'left'};
+    const {selectedRow, selectedColumn} = this.state;
 
     return (
       <div>
@@ -49,6 +60,8 @@ class HoverTableDemo extends Component {
             row={12}
             width={300}
             height={300}
+            selectedRow={selectedRow}
+            selectedColumn={selectedColumn}
             onClick={this.onClick}
             onMouseOut={this.onMouseOut}
             onMouseOver={this.onMouseOver}
@@ -71,9 +84,9 @@ class HoverTableDemo extends Component {
             <div ref={node => {
               this.rowNumber = node;
             }}/>
-            <h5>cellNumber: </h5>
+            <h5>columnNumber: </h5>
             <div ref={node => {
-              this.cellNumber = node;
+              this.columnNumber = node;
             }}/>
             <h5>rowHeight: </h5>
             <div ref={node => {
@@ -83,6 +96,10 @@ class HoverTableDemo extends Component {
             <div ref={node => {
               this.cellHeight = node;
             }}/>
+            <h5>selectedRow: </h5>
+            <div>{selectedRow ? selectedRow + 1 : 'none'}</div>
+            <h5>selectedColumn: </h5>
+            <div>{selectedColumn ? selectedColumn + 1 : 'none'}</div>
           </div>
         </div>
       </div>

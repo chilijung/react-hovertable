@@ -32,6 +32,8 @@ export default class HoverTable extends Component {
     height: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
     column: PropTypes.number.isRequired,
+    selectedRow: PropTypes.number,
+    selectedColumn: PropTypes.number,
     onMouseOver: PropTypes.func,
     onMouseOut: PropTypes.func,
     onClick: PropTypes.func
@@ -43,12 +45,12 @@ export default class HoverTable extends Component {
 
   onMouseOverColumn(e, data) {
     this.props.onMouseOver(e, data);
-    const x = (data.cellNumber + 1) * data.cellHeight;
+    const x = (data.columnNumber + 1) * data.cellHeight;
     const y = (data.rowNumber + 1) * data.rowHeight;
 
     this.setState({
       activeRow: data.rowNumber,
-      activeCell: data.cellNumber
+      activeCell: data.columnNumber
     });
     this.dimensions.setTranslate(x, y, data);
   }

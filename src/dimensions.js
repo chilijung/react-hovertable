@@ -12,7 +12,7 @@ export default class Dimensions extends Component {
       y: 0,
       data: {
         rowNumber: 0,
-        cellNumber: 0
+        columnNumber: 0
       }
     };
   }
@@ -50,7 +50,7 @@ export default class Dimensions extends Component {
     };
 
     return show ? <div style={style}>
-      {data.cellNumber + 1} x {data.rowNumber + 1}
+      {data.columnNumber + 1} x {data.rowNumber + 1}
     </div> : null;
   }
 }

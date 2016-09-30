@@ -6,7 +6,7 @@ export default class Cell extends Component {
   static propTypes = {
     rowHeight: PropTypes.number.isRequired,
     rowNumber: PropTypes.number.isRequired,
-    cellNumber: PropTypes.number.isRequired,
+    columnNumber: PropTypes.number.isRequired,
     activeRow: PropTypes.number,
     activeCell: PropTypes.number,
     width: PropTypes.number.isRequired,
@@ -15,7 +15,9 @@ export default class Cell extends Component {
     column: PropTypes.number.isRequired,
     onMouseOver: PropTypes.func.isRequired,
     onMouseOut: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    selectedRow: PropTypes.number,
+    selectedColumn: PropTypes.number
   };
 
   render() {
@@ -24,7 +26,9 @@ export default class Cell extends Component {
       rowNumber,
       activeCell,
       activeRow,
-      cellNumber,
+      selectedRow,
+      selectedColumn,
+      columnNumber,
       width,
       column,
       onMouseOver,
@@ -33,7 +37,7 @@ export default class Cell extends Component {
     } = this.props;
 
     const cellHeight = width / column;
-    let cellStyle;
+    let cellStyle = [];
 
     const outerStyle = {
       width: cellHeight,
@@ -55,27 +59,34 @@ export default class Cell extends Component {
       active: {
         backgroundColor: '#aaa'
       },
-      selected: {
+      mouseOver: {
         backgroundColor: '#eee'
+      },
+      selected: {
+        border: '2px solid #EEE'
       }
     };
 
-    if (rowNumber === activeRow && cellNumber === activeCell) {
-      cellStyle = [style.default, style.selected];
-    } else if (rowNumber <= activeRow && cellNumber <= activeCell) {
-      cellStyle = [style.default, style.active];
+    if (rowNumber === activeRow && columnNumber === activeCell) {
+      cellStyle.push(style.default, style.mouseOver);
+    } else if (rowNumber <= activeRow && columnNumber <= activeCell) {
+      cellStyle.push(style.default, style.active);
     } else {
-      cellStyle = [style.default];
+      cellStyle.push(style.default);
+    }
+
+    if (rowNumber <= selectedRow && columnNumber <= selectedColumn) {
+      cellStyle.push(style.selected);
     }
 
     return (
       <div
         style={outerStyle}
         onMouseOver={e =>
-          onMouseOver(e, {rowNumber, cellNumber, rowHeight, cellHeight})}
+          onMouseOver(e, {rowNumber, columnNumber, rowHeight, cellHeight})}
         onMouseOut={onMouseOut}
         onClick={e =>
-          onClick(e, {rowNumber, cellNumber, rowHeight, cellHeight})}
+          onClick(e, {rowNumber, columnNumber, rowHeight, cellHeight})}
         >
         <div style={cellStyle}/>
       </div>

@@ -14,7 +14,9 @@ export default class Row extends Component {
     column: PropTypes.number.isRequired,
     onMouseOver: PropTypes.func.isRequired,
     onMouseOut: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    selectedRow: PropTypes.number,
+    selectedColumn: PropTypes.number
   };
 
   render() {
@@ -39,7 +41,7 @@ export default class Row extends Component {
           columnArr.map((val, i) => <Cell
               {...this.props}
               key={i}
-              cellNumber={i}
+              columnNumber={i}
             />
           )
         }
