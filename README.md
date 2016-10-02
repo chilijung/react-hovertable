@@ -73,6 +73,10 @@ node devServer.js
 // open http://localhost:9393
 ```
 
+## Maintainer
+
+[chilijung](https://github.com/chilijung)
+
 ## License
 
 MIT © [Canner](https://github.com/canner)

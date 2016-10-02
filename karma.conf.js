@@ -13,14 +13,26 @@ module.exports = function(config) {
       'tests.webpack.js': ['webpack', 'sourcemap']
     },
     reporters: ['dots'],
+    customLaunchers: {
+      Chrome_travis_ci: { // eslint-disable-line
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     webpack: {
       externals: {
         'react/lib/ReactContext': 'window',
         'react/addons': true,
+        'jsdom': 'window',
+        'cheerio': 'window',
         'react/lib/ExecutionEnvironment': true
       },
       devtool: 'inline-source-map',
       module: {
+        noParse: [
+          // dynamic require calls in sinon confuse webpack so we ignore it
+          /node_modules\/sinon\//
+        ],
         loaders: [
           {
             test: /\.js$/,
@@ -31,7 +43,8 @@ module.exports = function(config) {
       },
       resolve: {
         alias: {
-          HoverTable: path.join(__dirname, './src/')
+          HoverTable: path.join(__dirname, './src/'),
+          sinon: 'sinon/pkg/sinon'
         }
       }
     },
@@ -39,4 +52,8 @@ module.exports = function(config) {
       noInfo: true
     }
   });
+
+  if (process.env.TRAVIS) {
+    config.browsers = ['Chrome_travis_ci'];
+  }
 };

@@ -33,7 +33,9 @@
     "babel-preset-airbnb": "^2.0.0",
     "babel-preset-react-hmre": "1.1.1",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.2",
     "cross-env": "^2.0.1",
+    "enzyme": "^2.4.1",
     "eslint": "^3.1.1",
     "eslint-config-google": "^0.4.0",
     "eslint-plugin-react": "^6.2.0",
@@ -50,6 +52,7 @@
     "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.2",
     "rimraf": "^2.5.4",
+    "sinon": "^1.17.6",
     "webpack": "^1.13.2",
     "webpack-hot-middleware": "^2.12.2"
   },
@@ -61,14 +64,15 @@
     "build:docs": "cross-env BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js",
     "prepublish": "npm run clean && npm run check:src && npm run build",
     "postpublish": "npm run build:docs",
-    "check:src": "npm run lint",
-    "test": "cross-env karma start --single-run",
-    "test:watch": "cross-env karma start",
+    "check:src": "npm run lint && npm run test",
+    "test": "cross-env BABEL_ENV=test karma start --single-run",
+    "test:watch": "cross-env BABEL_ENV=test karma start",
     "start": "node devServer.js",
     "validate": "npm ls"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "repository": "canner/react-hovertable",
   "dependencies": {

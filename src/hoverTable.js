@@ -34,10 +34,10 @@ export default class HoverTable extends Component {
   };
 
   static propTypes = {
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    row: PropTypes.number.isRequired,
-    column: PropTypes.number.isRequired,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    row: PropTypes.number,
+    column: PropTypes.number,
     showDimension: PropTypes.boolean,
     theme: PropTypes.string,
     selectedRow: PropTypes.number,
@@ -123,6 +123,7 @@ export default class HoverTable extends Component {
                   {
                     columnArr.map((val, columnNumber) => {
                       let cellStyleArr = [];
+                      let active = false;
                       if (rowNumber === activeRow && columnNumber === activeCell) {
                         cellStyleArr.push(cellStyle.default, cellStyle.mouseOver);
                       } else if (rowNumber <= activeRow && columnNumber <= activeCell) {
@@ -133,11 +134,13 @@ export default class HoverTable extends Component {
 
                       if (rowNumber <= selectedRow && columnNumber <= selectedColumn) {
                         cellStyleArr.push(cellStyle.selected);
+                        active = true;
                       }
 
                       return (
                         <DivCell
                           key={columnNumber}
+                          data-active={active}
                           outerStyle={cellOuterStyle}
                           style={cellStyleArr}
                           onMouseOut={this.onMouseOutColumn}
