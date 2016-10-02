@@ -22,12 +22,16 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/}
+          {
+            test: /\.js$/,
+            loaders: ['babel'],
+            exclude: path.resolve(__dirname, "node_modules")
+          }
         ]
       },
       resolve: {
         alias: {
-          dispatchRouter: path.join(__dirname, './src/')
+          HoverTable: path.join(__dirname, './src/')
         }
       }
     },

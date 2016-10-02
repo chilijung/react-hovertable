@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 import React, {Component, PropTypes} from 'react';
 
-import Table from './components/table';
-import Row from './components/row';
+import {DivTable, DivRow, DivCell} from 'react-modular-table';
 import Dimensions from './dimensions';
 import Radium from 'radium';
+import THEME from './styles';
 
 @Radium
 export default class HoverTable extends Component {
@@ -25,6 +26,7 @@ export default class HoverTable extends Component {
     height: 350,
     row: 12,
     column: 12,
+    theme: 'dark',
     onMouseOver: arg => arg,
     onMouseOut: arg => arg,
     onClick: arg => arg
@@ -35,6 +37,7 @@ export default class HoverTable extends Component {
     height: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
     column: PropTypes.number.isRequired,
+    theme: PropTypes.string,
     selectedRow: PropTypes.number,
     selectedColumn: PropTypes.number,
     onMouseOver: PropTypes.func,
@@ -48,8 +51,11 @@ export default class HoverTable extends Component {
 
   onMouseOverColumn(e, data) {
     this.props.onMouseOver(e, data);
-    const x = (data.columnNumber + 1) * data.cellWidth;
-    const y = (data.rowNumber + 1) * data.rowHeight;
+
+    const x = (data.columnNumber + 1) * (e.target.getAttribute('data-cellWidth') ||
+      e.target.parentNode.getAttribute('data-cellWidth'));
+    const y = (data.rowNumber + 1) * (e.target.getAttribute('data-rowHeight') ||
+      e.target.parentNode.getAttribute('data-rowHeight'));
 
     this.setState({
       activeRow: data.rowNumber,
@@ -73,43 +79,71 @@ export default class HoverTable extends Component {
       width,
       height,
       row,
-      column
+      theme,
+      column,
+      selectedRow,
+      selectedColumn
     } = this.props;
 
-    const rowArr = [].constructor.apply(this, new Array(row));
+    const {
+      activeCell,
+      activeRow
+    } = this.state;
 
-    const style = {
-      backgroundColor: '#383e4c',
-      position: 'relative',
-      padding: '5px',
-      width: width,
-      height: height,
-      boxSizing: 'content-box',
-      MozBoxSizing: 'content-box',
-      WebkitBoxSizing: 'content-box'
-    };
+    // theme style
+    const containerStyle = THEME[theme].container;
+    const tableStyle = THEME[theme].table;
+    const rowStyle = THEME[theme].row;
+    const cellOuterStyle = THEME[theme].cellOuter;
+    const cellStyle = THEME[theme].cell;
+
+    const rowArr = [].constructor.apply(this, new Array(row));
+    const columnArr = [].constructor.apply(this, new Array(column));
 
     return (
-      <div style={[style]}>
-        <Table width={width} height={height}>
-          {
-            rowArr.map((val, i) =>
-              <Row
-                {...this.props}
-                {...this.state}
-                rowHeight={height / row}
-                key={i}
-                rowNumber={i}
-                onClick={this.onClickColumn}
-                onMouseOver={this.onMouseOverColumn}
-                onMouseOut={this.onMouseOutColumn}
-                />
-            )
-          }
+      <div style={[containerStyle]}>
+        <div style={{position: 'relative'}}>
           <Dimensions ref={node => {
             this.dimensions = node;
           }}/>
-        </Table>
+          <DivTable width={width} height={height} outerStyle={tableStyle}>
+            {
+              rowArr.map((val, rowNumber) =>
+                <DivRow key={rowNumber} style={rowStyle}>
+                  {
+                    columnArr.map((val, columnNumber) => {
+                      let cellStyleArr = [];
+                      if (rowNumber === activeRow && columnNumber === activeCell) {
+                        cellStyleArr.push(cellStyle.default, cellStyle.mouseOver);
+                      } else if (rowNumber <= activeRow && columnNumber <= activeCell) {
+                        cellStyleArr.push(cellStyle.default, cellStyle.active);
+                      } else {
+                        cellStyleArr.push(cellStyle.default);
+                      }
+
+                      if (rowNumber <= selectedRow && columnNumber <= selectedColumn) {
+                        cellStyleArr.push(cellStyle.selected);
+                      }
+
+                      return (
+                        <DivCell
+                          key={columnNumber}
+                          outerStyle={cellOuterStyle}
+                          style={cellStyleArr}
+                          onMouseOut={this.onMouseOutColumn}
+                          onMouseOver={e =>
+                            this.onMouseOverColumn(e, {rowNumber, columnNumber})}
+                          onClick={e =>
+                            this.onClickColumn(e, {rowNumber, columnNumber})}
+                          />
+                      );
+                    })
+                  }
+                </DivRow>
+              )
+            }
+          </DivTable>
+        </div>
       </div>
     );
   }
