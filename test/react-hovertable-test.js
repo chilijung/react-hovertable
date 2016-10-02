@@ -33,9 +33,9 @@ describe('HoverTable default', () => {
     });
   });
 
-  it('should test every cell to have the right rowHeight, cellWidth', () => {
-    // just test first 20 cells
-    const timesArr = [].constructor.apply(this, new Array(20));
+  it('should test every cell to have the right rowHeight, cellWidth', done => { // eslint-disable-line max-len
+    // just test first 144 cells
+    const timesArr = [].constructor.apply(this, new Array(144));
 
     timesArr.forEach((val, i) => {
       expect(wrapper.find('DivCell').at(i))
@@ -43,6 +43,8 @@ describe('HoverTable default', () => {
       expect(wrapper.find('DivCell').at(i))
         .to.have.attr('data-cellWidth').equal(`${350 / 12}`);
     });
+
+    done();
   });
 
   it('should show Dimensions component', () => {
@@ -96,9 +98,9 @@ describe('HoverTable customize', () => {
     });
   });
 
-  it('should test every cell to have the right rowHeight, cellWidth', () => {
-    // just test first 20 cells
-    const timesArr = [].constructor.apply(this, new Array(20));
+  it('should test every cell to have the right rowHeight, cellWidth', done => { // eslint-disable-line max-len
+    // just test first 300 cells
+    const timesArr = [].constructor.apply(this, new Array(300));
 
     timesArr.forEach((val, i) => {
       expect(wrapper.find('DivCell').at(i))
@@ -106,6 +108,8 @@ describe('HoverTable customize', () => {
       expect(wrapper.find('DivCell').at(i))
         .to.have.attr('data-cellWidth').equal(`${400 / 15}`);
     });
+
+    done();
   });
 
   it('should not show Dimensions component', () => {
