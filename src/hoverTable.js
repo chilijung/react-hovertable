@@ -103,7 +103,7 @@ export default class HoverTable extends Component {
     return (
       <div style={[containerStyle]}>
         <div style={{position: 'relative'}}>
-          <Dimensions ref={node => {
+          <Dimensions theme={theme} ref={node => {
             this.dimensions = node;
           }}/>
           <DivTable width={width} height={height} outerStyle={tableStyle}>

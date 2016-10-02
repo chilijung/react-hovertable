@@ -1,5 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
+import Radium from 'radium';
+import THEME from './styles';
 
+@Radium
 export default class Dimensions extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +19,10 @@ export default class Dimensions extends Component {
       }
     };
   }
+
+  static propTypes = {
+    theme: PropTypes.string
+  };
 
   hideDimensions() {
     this.setState({show: false});
@@ -36,20 +43,13 @@ export default class Dimensions extends Component {
       data
     } = this.state;
 
-    const style = {
-      background: '#F0F0F0',
-      color: '#444',
-      fontWeight: 'bold',
-      textAlign: 'center',
-      position: 'absolute',
-      display: 'inline-block',
-      padding: '5px',
+    const dimensionStyle = THEME[this.props.theme].dimensions;
+    const position = {
       left: x,
-      top: y,
-      zIndex: 1000
+      top: y
     };
 
-    return show ? <div style={style}>
+    return show ? <div style={[dimensionStyle, position]}>
       {data.columnNumber + 1} x {data.rowNumber + 1}
     </div> : null;
   }

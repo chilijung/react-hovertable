@@ -24,5 +24,15 @@ export default {
     selected: {
       border: '2px solid #EEE'
     }
+  },
+  dimensions: {
+    background: '#F0F0F0',
+    color: '#444',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    position: 'absolute',
+    display: 'inline-block',
+    padding: '5px',
+    zIndex: 1000
   }
 };
