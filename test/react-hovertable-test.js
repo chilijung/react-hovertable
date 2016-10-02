@@ -34,7 +34,7 @@ describe('HoverTable default', () => {
   });
 
   it('should test every cell to have the right rowHeight, cellWidth', () => {
-    // just test 50 
+    // just test 50
     const timesArr = [].constructor.apply(this, new Array(50));
 
     timesArr.forEach((val, i) => {
