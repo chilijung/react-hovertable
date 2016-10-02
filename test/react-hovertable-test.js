@@ -34,8 +34,8 @@ describe('HoverTable default', () => {
   });
 
   it('should test every cell to have the right rowHeight, cellWidth', done => { // eslint-disable-line max-len
-    // just test first 144 cells
-    const timesArr = [].constructor.apply(this, new Array(144));
+    // just test first 10 cells
+    const timesArr = [].constructor.apply(this, new Array(10));
 
     timesArr.forEach((val, i) => {
       expect(wrapper.find('DivCell').at(i))
@@ -99,8 +99,8 @@ describe('HoverTable customize', () => {
   });
 
   it('should test every cell to have the right rowHeight, cellWidth', done => { // eslint-disable-line max-len
-    // just test first 300 cells
-    const timesArr = [].constructor.apply(this, new Array(300));
+    // just test first 10 cells
+    const timesArr = [].constructor.apply(this, new Array(10));
 
     timesArr.forEach((val, i) => {
       expect(wrapper.find('DivCell').at(i))
