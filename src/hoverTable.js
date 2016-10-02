@@ -26,6 +26,7 @@ export default class HoverTable extends Component {
     height: 350,
     row: 12,
     column: 12,
+    showDimension: true,
     theme: 'dark',
     onMouseOver: arg => arg,
     onMouseOut: arg => arg,
@@ -37,6 +38,7 @@ export default class HoverTable extends Component {
     height: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
     column: PropTypes.number.isRequired,
+    showDimension: PropTypes.boolean,
     theme: PropTypes.string,
     selectedRow: PropTypes.number,
     selectedColumn: PropTypes.number,
@@ -61,7 +63,9 @@ export default class HoverTable extends Component {
       activeRow: data.rowNumber,
       activeCell: data.columnNumber
     });
-    this.dimensions.setTranslate(x, y, data);
+    if (this.props.showDimension) {
+      this.dimensions.setTranslate(x, y, data);
+    }
   }
 
   onMouseOutColumn(e) {
@@ -71,7 +75,9 @@ export default class HoverTable extends Component {
       activeRow: null,
       activeCell: null
     });
-    this.dimensions.hideDimensions();
+    if (this.props.showDimension) {
+      this.dimensions.hideDimensions();
+    }
   }
 
   render() {
@@ -82,7 +88,8 @@ export default class HoverTable extends Component {
       theme,
       column,
       selectedRow,
-      selectedColumn
+      selectedColumn,
+      showDimension
     } = this.props;
 
     const {
@@ -103,9 +110,12 @@ export default class HoverTable extends Component {
     return (
       <div style={[containerStyle]}>
         <div style={{position: 'relative'}}>
-          <Dimensions theme={theme} ref={node => {
-            this.dimensions = node;
-          }}/>
+          {
+            showDimension ?
+            <Dimensions theme={theme} ref={node => {
+              this.dimensions = node;
+            }}/> : null
+          }
           <DivTable width={width} height={height} outerStyle={tableStyle}>
             {
               rowArr.map((val, rowNumber) =>

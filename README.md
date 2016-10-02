@@ -33,6 +33,7 @@ ReactDOM.render(
     width={300}
     height={300}
     onClick={onClick}
+    showDimension={true} // show dimension or not
     onMouseOut={onMouseOut}
     onMouseOver={onMouseOver}
     />
@@ -60,6 +61,8 @@ for more usage, see [docs folder](./docs/index.js)
 | onMouseOver    | function | false        | () => {}    | this will be trigger when mouse over, with two params, **e**: event object, **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
 | onMouseOut     | function | false        | () => {}    | this will be trigger when mouse out                                                                                                    |
 | onClick        | function | false        | () => {}    | this will be trigger when mouse over, with two params, **e**: event object, **data**: {rowNumber, columnNumber, rollHeight, cellHeight} |
+
+| showDimension  | boolean  | false        | true        | show dimension div or not                                                                                                         |
 
 ## Example
 

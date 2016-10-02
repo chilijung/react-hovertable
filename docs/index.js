@@ -9,10 +9,12 @@ class HoverTableDemo extends Component {
     this.onClick = this.onClick.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.onChange = this.onChange.bind(this);
 
     this.state = {
       selectedColumn: null,
-      selectedRow: null
+      selectedRow: null,
+      showDimension: true
     };
   }
 
@@ -48,6 +50,12 @@ class HoverTableDemo extends Component {
     this.cellWidth.innerHTML = data.cellWidth;
   }
 
+  onChange(e) {
+    this.setState({
+      showDimension: e.target.checked
+    });
+  }
+
   render() {
     const style = {width: '50%', float: 'left'};
     const {selectedRow, selectedColumn} = this.state;
@@ -55,12 +63,17 @@ class HoverTableDemo extends Component {
     return (
       <div>
         <div style={style}>
+          <p>
+            <input type="checkbox" checked={this.state.showDimension} ref="showDimension" onChange={this.onChange}/>
+              show dimension or not
+          </p>
           <HoverTable
             column={12}
             row={12}
             width={300}
             height={300}
             selectedRow={selectedRow}
+            showDimension={this.state.showDimension}
             selectedColumn={selectedColumn}
             onClick={this.onClick}
             onMouseOut={this.onMouseOut}
