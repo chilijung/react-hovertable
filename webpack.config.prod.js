@@ -10,8 +10,8 @@ module.exports = {
     libraryTarget: 'var'
   },
   externals: {
-    react: "React",
-    lodash: '_'
+    'react': "React",
+    'react-dom': "ReactDOM"
   },
   resolve: {
     extensions: ['', '.js']
