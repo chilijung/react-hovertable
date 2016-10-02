@@ -25,8 +25,6 @@ class HoverTableDemo extends Component {
     // data
     this.rowNumber.innerHTML = data.rowNumber;
     this.columnNumber.innerHTML = data.columnNumber;
-    this.rowHeight.innerHTML = data.rowHeight;
-    this.cellWidth.innerHTML = data.cellWidth;
 
     this.setState({
       selectedColumn: data.columnNumber,
@@ -48,8 +46,6 @@ class HoverTableDemo extends Component {
     // data
     this.rowNumber.innerHTML = data.rowNumber;
     this.columnNumber.innerHTML = data.columnNumber;
-    this.rowHeight.innerHTML = data.rowHeight;
-    this.cellWidth.innerHTML = data.cellWidth;
   }
 
   onChange(e) {
@@ -125,14 +121,6 @@ class HoverTableDemo extends Component {
             <h5>columnNumber: </h5>
             <div ref={node => {
               this.columnNumber = node;
-            }}/>
-            <h5>rowHeight: </h5>
-            <div ref={node => {
-              this.rowHeight = node;
-            }}/>
-            <h5>cellWidth: </h5>
-            <div ref={node => {
-              this.cellWidth = node;
             }}/>
             <h5>selectedRow: </h5>
             <div>{selectedRow ? selectedRow + 1 : 'none'}</div>
