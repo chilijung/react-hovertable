@@ -37,8 +37,6 @@ class HoverTableDemo extends Component {
     // data
     this.rowNumber.innerHTML = 'none';
     this.columnNumber.innerHTML = 'none';
-    this.rowHeight.innerHTML = 'none';
-    this.cellWidth.innerHTML = 'none';
   }
 
   onMouseOver(e, data) {
