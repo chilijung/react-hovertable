@@ -31,7 +31,7 @@ export default {
     fontWeight: 'bold',
     textAlign: 'center',
     position: 'absolute',
-    display: 'inline-block',
+    wordBreak: 'keep-all',
     padding: '5px',
     zIndex: 1000
   }

@@ -50,7 +50,7 @@ export default class Dimensions extends Component {
     };
 
     return show ? <div style={[dimensionStyle, position]}>
-      {data.columnNumber + 1} x {data.rowNumber + 1}
+      {data.columnNumber + 1}<span style={{padding: '0 3px'}}>x</span>{data.rowNumber + 1}
     </div> : null;
   }
 }
