@@ -108,7 +108,7 @@ export default class HoverTable extends Component {
     const columnArr = [].constructor.apply(this, new Array(column));
 
     return (
-      <div style={[containerStyle]}>
+      <div style={[containerStyle, {display: 'inline-block'}]}>
         <div style={{position: 'relative'}}>
           {
             showDimension ?

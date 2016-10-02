@@ -10,11 +10,13 @@ class HoverTableDemo extends Component {
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onChangeTheme = this.onChangeTheme.bind(this);
 
     this.state = {
       selectedColumn: null,
       selectedRow: null,
-      showDimension: true
+      showDimension: true,
+      theme: 'dark'
     };
   }
 
@@ -56,16 +58,38 @@ class HoverTableDemo extends Component {
     });
   }
 
+  onChangeTheme(e) {
+    this.setState({
+      theme: e.target.value
+    });
+  }
+
   render() {
     const style = {width: '50%', float: 'left'};
-    const {selectedRow, selectedColumn} = this.state;
+    const {selectedRow, selectedColumn, theme} = this.state;
 
     return (
       <div>
         <div style={style}>
           <p>
-            <input type="checkbox" checked={this.state.showDimension} ref="showDimension" onChange={this.onChange}/>
+            <input type="checkbox" checked={this.state.showDimension}
+              ref="showDimension" onChange={this.onChange}/>
               show dimension or not
+          </p>
+          <p>
+            <h3>Choose your theme!</h3>
+            <div>
+            <input type="radio" name="theme" value="dark"
+              checked={theme === 'dark'}
+              onChange={this.onChangeTheme}/>
+              dark
+            </div>
+            <div>
+            <input type="radio" name="theme" value="light"
+              checked={theme === 'light'}
+              onChange={this.onChangeTheme}/>
+              light
+            </div>
           </p>
           <HoverTable
             column={12}
@@ -73,6 +97,7 @@ class HoverTableDemo extends Component {
             width={300}
             height={300}
             selectedRow={selectedRow}
+            theme={theme}
             showDimension={this.state.showDimension}
             selectedColumn={selectedColumn}
             onClick={this.onClick}

@@ -1,6 +1,6 @@
 export default {
   container: {
-    backgroundColor: '#383e4c',
+    backgroundColor: '#FFF',
     padding: '5px'
   },
   table: {
@@ -12,16 +12,16 @@ export default {
   },
   cell: {
     default: {
-      border: '1px solid #aaa'
+      border: '1px solid #CCC'
     },
     active: {
-      backgroundColor: '#aaa'
+      backgroundColor: '#DEF'
     },
     mouseOver: {
-      backgroundColor: '#eee'
+      backgroundColor: '#DEF'
     },
     selected: {
-      border: '2px solid #EEE'
+      border: '2px solid #aaa'
     }
   },
   dimensions: {
