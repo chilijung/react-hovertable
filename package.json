@@ -77,6 +77,6 @@
   "repository": "canner/react-hovertable",
   "dependencies": {
     "radium": "^0.18.1",
-    "react-modular-table": "^1.1.0"
+    "react-modular-table": "^1.2.0"
   }
 }
