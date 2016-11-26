@@ -38,7 +38,7 @@ export default class HoverTable extends Component {
     height: PropTypes.number,
     row: PropTypes.number,
     column: PropTypes.number,
-    showDimension: PropTypes.boolean,
+    showDimension: PropTypes.bool,
     theme: PropTypes.string,
     selectedRow: PropTypes.number,
     selectedColumn: PropTypes.number,
