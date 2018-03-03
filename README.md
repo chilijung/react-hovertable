@@ -1,4 +1,6 @@
 # react-hovertable [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/react-hovertable.svg)](https://greenkeeper.io/)
 > react hovertable to select column and row in a table!
 
 ## Installation
