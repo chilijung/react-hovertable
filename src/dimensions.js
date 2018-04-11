@@ -1,13 +1,26 @@
-import React, {Component, PropTypes} from 'react';
+// @flow
+import * as React from 'react';
+import type {Data} from './hoverTable';
 import Radium from 'radium';
 import THEME from './styles';
 
+type Props = {
+  theme: string
+}
+
+type State = {
+  show: boolean,
+  x: number,
+  y: number,
+  data: Data
+}
+
 @Radium
-export default class Dimensions extends Component {
-  constructor(props) {
+export default class Dimensions extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
-    this.setTranslate = this.setTranslate.bind(this);
+    (this: any).setTranslate = this.setTranslate.bind(this);
 
     this.state = {
       show: false,
@@ -20,15 +33,11 @@ export default class Dimensions extends Component {
     };
   }
 
-  static propTypes = {
-    theme: PropTypes.string
-  };
-
   hideDimensions() {
     this.setState({show: false});
   }
 
-  setTranslate(x, y, data) {
+  setTranslate(x: number, y: number, data: Data) {
     this.setState({
       show: true,
       x, y, data

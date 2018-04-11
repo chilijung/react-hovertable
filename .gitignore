@@ -2,3 +2,6 @@ node_modules
 npm-debug.log
 coverage
 lib
+*.log
+_gh-pages
+docs/static

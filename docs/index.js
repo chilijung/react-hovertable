@@ -16,7 +16,7 @@ class HoverTableDemo extends Component {
       selectedColumn: null,
       selectedRow: null,
       showDimension: true,
-      theme: 'dark'
+      theme: 'light'
     };
   }
 
@@ -65,12 +65,12 @@ class HoverTableDemo extends Component {
     return (
       <div>
         <div style={style}>
-          <p>
+          <div>
             <input type="checkbox" checked={this.state.showDimension}
               ref="showDimension" onChange={this.onChange}/>
               show dimension or not
-          </p>
-          <p>
+          </div>
+          <div>
             <h3>Choose your theme!</h3>
             <div>
             <input type="radio" name="theme" value="dark"
@@ -84,7 +84,7 @@ class HoverTableDemo extends Component {
               onChange={this.onChangeTheme}/>
               light
             </div>
-          </p>
+          </div>
           <HoverTable
             column={12}
             row={12}

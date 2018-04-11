@@ -1,18 +1,11 @@
 {
   "presets": [
-    "airbnb"
+    "env",
+    "react",
+    "flow",
+    "stage-0"
   ],
-  "plugins": ["transform-decorators-legacy", "transform-class-properties", "add-module-exports"],
-  "env": {
-    "development": {
-      "presets": [
-        "react-hmre"
-      ]
-    },
-    "production": {
-      "plugins": [
-        "transform-react-remove-prop-types"
-      ]
-    }
-  }
+  "plugins": [
+    "transform-decorators-legacy"
+  ]
 }

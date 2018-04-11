@@ -1,25 +1,51 @@
-/* eslint-disable max-len */
-import React, {Component, PropTypes} from 'react';
+// @flow
+import * as React from 'react';
 
 import {DivTable, DivRow, DivCell} from 'react-modular-table';
 import Dimensions from './dimensions';
 import Radium from 'radium';
 import THEME from './styles';
 
+export type Data = {
+  rowNumber: number,
+  columnNumber: number
+}
+
+type Props = {
+  width: number,
+  height: number,
+  row: number,
+  column: number,
+  showDimension: boolean,
+  theme: string,
+  selectedRow: number,
+  selectedColumn: number,
+  onMouseOver: (Event, Data) => void,
+  onMouseOut: (Event) => void,
+  onClick: (Event, Data) => void
+}
+
+type State = {
+  activeRow: ?number,
+  activeCell: ?number
+}
+
 @Radium
-export default class HoverTable extends Component {
-  constructor(props) {
+export default class HoverTable extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
-    this.onClickColumn = this.onClickColumn.bind(this);
-    this.onMouseOverColumn = this.onMouseOverColumn.bind(this);
-    this.onMouseOutColumn = this.onMouseOutColumn.bind(this);
+    (this: any).onClickColumn = this.onClickColumn.bind(this);
+    (this: any).onMouseOverColumn = this.onMouseOverColumn.bind(this);
+    (this: any).onMouseOutColumn = this.onMouseOutColumn.bind(this);
 
     this.state = {
       activeRow: null,
       activeCell: null
     };
   }
+
+  dimensions: ?Dimensions
 
   static defaultProps = {
     width: 350,
@@ -28,54 +54,43 @@ export default class HoverTable extends Component {
     column: 12,
     showDimension: true,
     theme: 'dark',
-    onMouseOver: arg => arg,
-    onMouseOut: arg => arg,
-    onClick: arg => arg
+    onMouseOver: (arg: Event) => arg,
+    onMouseOut: (arg: Event) => arg,
+    onClick: (arg: Event) => arg
   };
 
-  static propTypes = {
-    width: PropTypes.number,
-    height: PropTypes.number,
-    row: PropTypes.number,
-    column: PropTypes.number,
-    showDimension: PropTypes.bool,
-    theme: PropTypes.string,
-    selectedRow: PropTypes.number,
-    selectedColumn: PropTypes.number,
-    onMouseOver: PropTypes.func,
-    onMouseOut: PropTypes.func,
-    onClick: PropTypes.func
-  };
-
-  onClickColumn(e, data) {
+  onClickColumn(e: Event, data: Data) {
     this.props.onClick(e, data);
   }
 
-  onMouseOverColumn(e, data) {
+  onMouseOverColumn(e: Event, data: Data) {
+    const {width, height, row, column} = this.props;
     this.props.onMouseOver(e, data);
 
-    const x = (data.columnNumber + 1) * (e.target.getAttribute('data-cellWidth') ||
-      e.target.parentNode.getAttribute('data-cellWidth'));
-    const y = (data.rowNumber + 1) * (e.target.getAttribute('data-rowHeight') ||
-      e.target.parentNode.getAttribute('data-rowHeight'));
+    if (!e.target) return;
+
+    // $FlowFixMe
+    const x = (data.columnNumber + 1) * width / column;
+    // $FlowFixMe
+    const y = (data.rowNumber + 1) * height / row;
 
     this.setState({
       activeRow: data.rowNumber,
       activeCell: data.columnNumber
     });
-    if (this.props.showDimension) {
+    if (this.props.showDimension && this.dimensions) {
       this.dimensions.setTranslate(x, y, data);
     }
   }
 
-  onMouseOutColumn(e) {
+  onMouseOutColumn(e: Event) {
     this.props.onMouseOut(e);
 
     this.setState({
       activeRow: null,
       activeCell: null
     });
-    if (this.props.showDimension) {
+    if (this.props.showDimension && this.dimensions) {
       this.dimensions.hideDimensions();
     }
   }
@@ -122,18 +137,18 @@ export default class HoverTable extends Component {
                 <DivRow key={rowNumber} style={rowStyle}>
                   {
                     columnArr.map((val, columnNumber) => {
-                      let cellStyleArr = [];
+                      let newCellStyle = {};
                       let active = false;
                       if (rowNumber === activeRow && columnNumber === activeCell) {
-                        cellStyleArr.push(cellStyle.default, cellStyle.mouseOver);
+                        newCellStyle = Object.assign({}, cellStyle.default, cellStyle.mouseOver);
                       } else if (rowNumber <= activeRow && columnNumber <= activeCell) {
-                        cellStyleArr.push(cellStyle.default, cellStyle.active);
+                        newCellStyle = Object.assign({}, cellStyle.default, cellStyle.active);
                       } else {
-                        cellStyleArr.push(cellStyle.default);
+                        newCellStyle = Object.assign({}, cellStyle.default);
                       }
 
                       if (rowNumber <= selectedRow && columnNumber <= selectedColumn) {
-                        cellStyleArr.push(cellStyle.selected);
+                        newCellStyle = Object.assign({}, cellStyle.selected);
                         active = true;
                       }
 
@@ -142,7 +157,7 @@ export default class HoverTable extends Component {
                           key={columnNumber}
                           data-active={active}
                           outerStyle={cellOuterStyle}
-                          style={cellStyleArr}
+                          style={newCellStyle}
                           onMouseOut={this.onMouseOutColumn}
                           onMouseOver={e =>
                             this.onMouseOverColumn(e, {rowNumber, columnNumber})}

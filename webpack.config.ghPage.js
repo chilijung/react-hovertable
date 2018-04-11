@@ -3,15 +3,19 @@ const path = require('path');
 module.exports = {
   entry: './docs/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs/static'),
     filename: 'bundle.js',
-    publicPath: '/docs/static/'
+    libraryTarget: 'var'
+  },
+  externals: {
+    'react': "React",
+    'react-dom': "ReactDOM"
   },
   resolve: {
     extensions: ['.js']
   },
   resolveLoader: {
-    moduleExtensions: ['-loader']
+    moduleExtensions: ["-loader"]
   },
   module: {
     rules: [
