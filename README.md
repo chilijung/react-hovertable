@@ -69,8 +69,7 @@ for more usage, see [docs folder](./docs/index.js)
 clone the repository
 
 ```
-node devServer.js
-// open http://localhost:9393
+npm start
 ```
 
 ## Maintainer
